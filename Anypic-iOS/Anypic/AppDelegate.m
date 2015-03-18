@@ -63,7 +63,7 @@
     
     // ****************************************************************************
     // Parse initialization
-    // [Parse setApplicationId:@"APPLICATION_ID" clientKey:@"CLIENT_KEY"];
+    [Parse setApplicationId:@"gRnRVbcEZFcNqf0W9vmwgyLUyNsHEgIbfIDOhETZ" clientKey:@"ODishlADPGuqa9DbuZMyBCIxuK9mpDCi1shQagh6"];
     //
     // Make sure to update your URL scheme to match this facebook id. It should be "fbFACEBOOK_APP_ID" where FACEBOOK_APP_ID is your Facebook app's id.
     // You may set one up at https://developers.facebook.com/apps
