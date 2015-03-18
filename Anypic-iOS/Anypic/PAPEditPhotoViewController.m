@@ -3,6 +3,7 @@
 //  Anypic
 //
 //  Created by Héctor Ramos on 5/3/12.
+//  Copyright (c) 2013 Parse. All rights reserved.
 //
 
 #import "PAPEditPhotoViewController.h"
@@ -61,20 +62,13 @@
 - (void)loadView {
     self.scrollView = [[UIScrollView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
     self.scrollView.delegate = self;
-    self.scrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"BackgroundLeather.png"]];
+    self.scrollView.backgroundColor = [UIColor blackColor];
     self.view = self.scrollView;
     
-    UIImageView *photoImageView = [[UIImageView alloc] initWithFrame:CGRectMake(20.0f, 42.0f, 280.0f, 280.0f)];
+    UIImageView *photoImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 42.0f, 320.0f, 320.0f)];
     [photoImageView setBackgroundColor:[UIColor blackColor]];
     [photoImageView setImage:self.image];
     [photoImageView setContentMode:UIViewContentModeScaleAspectFit];
-
-    CALayer *layer = photoImageView.layer;
-    layer.masksToBounds = NO;
-    layer.shadowRadius = 3.0f;
-    layer.shadowOffset = CGSizeMake(0.0f, 2.0f);
-    layer.shadowOpacity = 0.5f;
-    layer.shouldRasterize = YES;
     
     [self.scrollView addSubview:photoImageView];
     
@@ -95,7 +89,7 @@
     [self.navigationItem setHidesBackButton:YES];
 
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"LogoNavigationBar.png"]];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(cancelButtonAction:)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancelButtonAction:)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Publish" style:UIBarButtonItemStyleDone target:self action:@selector(doneButtonAction:)];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
@@ -141,7 +135,7 @@
         [[UIApplication sharedApplication] endBackgroundTask:self.fileUploadBackgroundTaskId];
     }];
     
-    NSLog(@"Requested background expiration task with id %d for Anypic photo upload", self.fileUploadBackgroundTaskId);
+    NSLog(@"Requested background expiration task with id %lu for Anypic photo upload", (unsigned long)self.fileUploadBackgroundTaskId);
     [self.photoFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
             NSLog(@"Photo uploaded successfully");
@@ -166,8 +160,9 @@
     [self.scrollView setContentSize:scrollViewContentSize];
     
     CGPoint scrollViewContentOffset = self.scrollView.contentOffset;
-    scrollViewContentOffset.y += keyboardFrameEnd.size.height;
-    scrollViewContentOffset.y -= 42.0f;
+    // Align the bottom edge of the photo with the keyboard
+    scrollViewContentOffset.y = scrollViewContentOffset.y + keyboardFrameEnd.size.height*3.0f - [UIScreen mainScreen].bounds.size.height;
+    
     [self.scrollView setContentOffset:scrollViewContentOffset animated:YES];
 }
 
@@ -251,11 +246,11 @@
         [[UIApplication sharedApplication] endBackgroundTask:self.photoPostBackgroundTaskId];
     }];
     
-    [self.parentViewController dismissModalViewControllerAnimated:YES];
+    [self.parentViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)cancelButtonAction:(id)sender {
-    [self.parentViewController dismissModalViewControllerAnimated:YES];
+    [self.parentViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

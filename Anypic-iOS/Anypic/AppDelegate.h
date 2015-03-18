@@ -3,11 +3,12 @@
 //  Anypic
 //
 //  Created by Héctor Ramos on 5/04/12.
+//  Copyright (c) 2013 Parse. All rights reserved.
 //
 
 #import "PAPTabBarController.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, PFLogInViewControllerDelegate, PF_FBRequestDelegate, NSURLConnectionDataDelegate, UITabBarControllerDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, NSURLConnectionDataDelegate, UITabBarControllerDelegate>
 
 @property (nonatomic, strong) UIWindow *window;
 
@@ -19,10 +20,11 @@
 - (BOOL)isParseReachable;
 
 - (void)presentLoginViewController;
-- (void)presentLoginViewControllerAnimated:(BOOL)animated;
+- (void)presentLoginViewController:(BOOL)animated;
 - (void)presentTabBarController;
 
 - (void)logOut;
 
+- (void)autoFollowUsers;
 
 @end

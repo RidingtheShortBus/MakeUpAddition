@@ -3,6 +3,7 @@
 //  Anypic
 //
 //  Created by Mattieu Gamache-Asselin on 5/14/12.
+//  Copyright (c) 2013 Parse. All rights reserved.
 //
 
 #import "PAPActivityCell.h"
@@ -32,12 +33,8 @@ static TTTTimeIntervalFormatter *timeFormatter;
 
 @end
 
-
 @implementation PAPActivityCell
 
-@synthesize activityImageButton,activityImageView;
-@synthesize activity = _activity;
-@synthesize hasActivityImage;
 
 #pragma mark - NSObject
 
@@ -50,7 +47,7 @@ static TTTTimeIntervalFormatter *timeFormatter;
         if (!timeFormatter) {
             timeFormatter = [[TTTTimeIntervalFormatter alloc] init];
         }
-
+        
         // Create subviews and set cell properties
         self.opaque = YES;
         self.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -79,8 +76,8 @@ static TTTTimeIntervalFormatter *timeFormatter;
     // Layout the activity image and show it if it is not nil (no image for the follow activity).
     // Note that the image view is still allocated and ready to be dispalyed since these cells
     // will be reused for all types of activity.
-    [self.activityImageView setFrame:CGRectMake( [UIScreen mainScreen].bounds.size.width - 46.0f, 8.0f, 33.0f, 33.0f)];
-    [self.activityImageButton setFrame:CGRectMake( [UIScreen mainScreen].bounds.size.width - 46.0f, 8.0f, 33.0f, 33.0f)];
+    [self.activityImageView setFrame:CGRectMake( [UIScreen mainScreen].bounds.size.width - 46.0f, 13.0f, 33.0f, 33.0f)];
+    [self.activityImageButton setFrame:CGRectMake( [UIScreen mainScreen].bounds.size.width - 46.0f, 13.0f, 33.0f, 33.0f)];
 
     // Add activity image if one was set
     if (self.hasActivityImage) {
@@ -92,12 +89,18 @@ static TTTTimeIntervalFormatter *timeFormatter;
     }
 
     // Change frame of the content text so it doesn't go through the right-hand side picture
-    CGSize contentSize = [self.contentLabel.text sizeWithFont:[UIFont systemFontOfSize:13.0f] constrainedToSize:CGSizeMake([UIScreen mainScreen].bounds.size.width - 72.0f - 46.0f, CGFLOAT_MAX) lineBreakMode:UILineBreakModeWordWrap];
-    [self.contentLabel setFrame:CGRectMake( 46.0f, 10.0f, contentSize.width, contentSize.height)];
+    CGSize contentSize = [self.contentLabel.text boundingRectWithSize:CGSizeMake([UIScreen mainScreen].bounds.size.width - 72.0f - 46.0f, CGFLOAT_MAX)
+                                                    options:NSStringDrawingUsesLineFragmentOrigin // wordwrap?
+                                                 attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13.0f]}
+                                                    context:nil].size;
+    [self.contentLabel setFrame:CGRectMake( 46.0f, 15.0f, contentSize.width, contentSize.height)];
     
     // Layout the timestamp label given new vertical 
-    CGSize timeSize = [self.timeLabel.text sizeWithFont:[UIFont systemFontOfSize:11.0f] forWidth:[UIScreen mainScreen].bounds.size.width - 72.0f - 46.0f lineBreakMode:UILineBreakModeTailTruncation];
-    [self.timeLabel setFrame:CGRectMake( 46.0f, self.contentLabel.frame.origin.y + self.contentLabel.frame.size.height + 2.0f, timeSize.width, timeSize.height)];
+    CGSize timeSize = [self.timeLabel.text boundingRectWithSize:CGSizeMake([UIScreen mainScreen].bounds.size.width - 72.0f - 46.0f, CGFLOAT_MAX)
+                                                    options:NSStringDrawingTruncatesLastVisibleLine|NSStringDrawingUsesLineFragmentOrigin
+                                                 attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:11.0f]}
+                                                    context:nil].size;
+    [self.timeLabel setFrame:CGRectMake( 46.0f, self.contentLabel.frame.origin.y + self.contentLabel.frame.size.height + 7.0f, timeSize.width, timeSize.height)];
 }
 
 
@@ -105,9 +108,9 @@ static TTTTimeIntervalFormatter *timeFormatter;
 
 - (void)setIsNew:(BOOL)isNew {
     if (isNew) {
-        [self.mainView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"BackgroundNewActivity.png"]]];
+        [self.mainView setBackgroundColor:[UIColor colorWithRed:29.0f/255.0f green:29.0f/255.0f blue:29.0f/255.0f alpha:1.0f]];
     } else {
-        [self.mainView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"BackgroundComments.png"]]];
+        [self.mainView setBackgroundColor:[UIColor blackColor]];
     }
 }
 
@@ -125,9 +128,19 @@ static TTTTimeIntervalFormatter *timeFormatter;
     self.user = [activity objectForKey:kPAPActivityFromUserKey];
     
     // Set name button properties and avatar image
-    [self.avatarImageView setFile:[self.user objectForKey:kPAPUserProfilePicSmallKey]];
-    [self.nameButton setTitle:[self.user objectForKey:kPAPUserDisplayNameKey] forState:UIControlStateNormal];
-    [self.nameButton setTitle:[self.user objectForKey:kPAPUserDisplayNameKey] forState:UIControlStateHighlighted];
+    if ([PAPUtility userHasProfilePictures:self.user]) {
+        [self.avatarImageView setFile:[self.user objectForKey:kPAPUserProfilePicSmallKey]];
+    } else {
+        [self.avatarImageView setImage:[PAPUtility defaultProfilePicture]];
+    }
+    
+    NSString *nameString = NSLocalizedString(@"Someone", @"Text when the user's name is unknown");
+    if (self.user && [self.user objectForKey:kPAPUserDisplayNameKey] && [[self.user objectForKey:kPAPUserDisplayNameKey] length] > 0) {
+        nameString = [self.user objectForKey:kPAPUserDisplayNameKey];
+    }
+    
+    [self.nameButton setTitle:nameString forState:UIControlStateNormal];
+    [self.nameButton setTitle:nameString forState:UIControlStateHighlighted];
     
     // If user is set after the contentText, we reset the content to include padding
     if (self.contentLabel.text) {
@@ -135,8 +148,11 @@ static TTTTimeIntervalFormatter *timeFormatter;
     }
 
     if (self.user) {
-        CGSize nameSize = [self.nameButton.titleLabel.text sizeWithFont:[UIFont boldSystemFontOfSize:13.0f] forWidth:nameMaxWidth lineBreakMode:UILineBreakModeTailTruncation];
-        NSString *paddedString = [PAPBaseTextCell padString:activityString withFont:[UIFont systemFontOfSize:13.0f] toWidth:nameSize.width];    
+        CGSize nameSize = [self.nameButton.titleLabel.text boundingRectWithSize:CGSizeMake(nameMaxWidth, CGFLOAT_MAX)
+                                                        options:NSStringDrawingTruncatesLastVisibleLine|NSStringDrawingUsesLineFragmentOrigin
+                                                     attributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:13.0f]}
+                                                        context:nil].size;
+        NSString *paddedString = [PAPBaseTextCell padString:activityString withFont:[UIFont systemFontOfSize:13.0f] toWidth:nameSize.width];
         [self.contentLabel setText:paddedString];
     } else { // Otherwise we ignore the padding and we'll add it after we set the user
         [self.contentLabel setText:activityString];
@@ -176,17 +192,27 @@ static TTTTimeIntervalFormatter *timeFormatter;
 }
 
 + (CGFloat)heightForCellWithName:(NSString *)name contentString:(NSString *)content cellInsetWidth:(CGFloat)cellInset {
-    CGSize nameSize = [name sizeWithFont:[UIFont boldSystemFontOfSize:13.0f] forWidth:200.0f lineBreakMode:UILineBreakModeTailTruncation];
+    CGSize nameSize = [name boundingRectWithSize:CGSizeMake(200.0f, CGFLOAT_MAX)
+                                                    options:NSStringDrawingTruncatesLastVisibleLine|NSStringDrawingUsesLineFragmentOrigin
+                                                 attributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:13.0f]}
+                                                    context:nil].size;
     NSString *paddedString = [PAPBaseTextCell padString:content withFont:[UIFont systemFontOfSize:13.0f] toWidth:nameSize.width];
     CGFloat horizontalTextSpace = [PAPActivityCell horizontalTextSpaceForInsetWidth:cellInset];
     
-    CGSize contentSize = [paddedString sizeWithFont:[UIFont systemFontOfSize:13.0f] constrainedToSize:CGSizeMake(horizontalTextSpace, CGFLOAT_MAX) lineBreakMode:UILineBreakModeWordWrap];
-    CGFloat singleLineHeight = [@"Test" sizeWithFont:[UIFont systemFontOfSize:13.0f]].height;
+    CGSize contentSize = [paddedString boundingRectWithSize:CGSizeMake(horizontalTextSpace, CGFLOAT_MAX)
+                                                    options:NSStringDrawingUsesLineFragmentOrigin // wordwrap?
+                                                 attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13.0f]}
+                                                    context:nil].size;
+
+    CGFloat singleLineHeight = [@"Test" boundingRectWithSize:CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX)
+                                                    options:NSStringDrawingUsesLineFragmentOrigin
+                                                 attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13.0f]}
+                                                    context:nil].size.height;
     
     // Calculate the added height necessary for multiline text. Ensure value is not below 0.
     CGFloat multilineHeightAddition = contentSize.height - singleLineHeight;
 
-    return 48.0f + fmax(0.0f, multilineHeightAddition);
+    return 58.0f + fmax(0.0f, multilineHeightAddition);
 }
 
 - (void)setActivityImageFile:(PFFile *)imageFile {

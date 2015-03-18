@@ -3,6 +3,7 @@
 //  Anypic
 //
 //  Created by Héctor Ramos on 5/15/12.
+//  Copyright (c) 2013 Parse. All rights reserved.
 //
 
 typedef enum {
@@ -16,7 +17,7 @@ typedef enum {
 
 @protocol PAPPhotoHeaderViewDelegate;
 
-@interface PAPPhotoHeaderView : UIView
+@interface PAPPhotoHeaderView : UITableViewCell
 
 /*! @name Creating Photo Header View */
 /*!

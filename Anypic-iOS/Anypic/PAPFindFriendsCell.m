@@ -3,6 +3,7 @@
 //  Anypic
 //
 //  Created by Mattieu Gamache-Asselin on 5/31/12.
+//  Copyright (c) 2013 Parse. All rights reserved.
 //
 
 #import "PAPFindFriendsCell.h"
@@ -31,53 +32,59 @@
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        [self.contentView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"BackgroundFindFriendsCell.png"]]];
-        [self setSelectionStyle:UITableViewCellSelectionStyleNone];
-        
+        self.backgroundColor = [UIColor blackColor];
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
+
         self.avatarImageView = [[PAPProfileImageView alloc] init];
-        [self.avatarImageView setFrame:CGRectMake( 10.0f, 14.0f, 40.0f, 40.0f)];
+        self.avatarImageView.frame = CGRectMake( 10.0f, 14.0f, 40.0f, 40.0f);
+        self.avatarImageView.layer.cornerRadius = 23.0f;
+        self.avatarImageView.layer.masksToBounds = YES;
         [self.contentView addSubview:self.avatarImageView];
         
         self.avatarImageButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [self.avatarImageButton setBackgroundColor:[UIColor clearColor]];
-        [self.avatarImageButton setFrame:CGRectMake( 10.0f, 14.0f, 40.0f, 40.0f)];
-        [self.avatarImageButton addTarget:self action:@selector(didTapUserButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+        self.avatarImageButton.backgroundColor = [UIColor clearColor];
+        self.avatarImageButton.frame = CGRectMake( 10.0f, 14.0f, 40.0f, 40.0f);
+        [self.avatarImageButton addTarget:self action:@selector(didTapUserButtonAction:)
+                         forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:self.avatarImageButton];
         
         self.nameButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [self.nameButton setBackgroundColor:[UIColor clearColor]];
-        [self.nameButton.titleLabel setFont:[UIFont boldSystemFontOfSize:16.0f]];
-        [self.nameButton.titleLabel setLineBreakMode:UILineBreakModeTailTruncation];
-        [self.nameButton setTitleColor:[UIColor colorWithRed:87.0f/255.0f green:72.0f/255.0f blue:49.0f/255.0f alpha:1.0f] forState:UIControlStateNormal];
-        [self.nameButton setTitleColor:[UIColor colorWithRed:134.0f/255.0f green:100.0f/255.0f blue:65.0f/255.0f alpha:1.0f] forState:UIControlStateHighlighted];
-        [self.nameButton setTitleShadowColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [self.nameButton setTitleShadowColor:[UIColor whiteColor] forState:UIControlStateSelected];
-        [self.nameButton.titleLabel setShadowOffset:CGSizeMake( 0.0f, 1.0f)];
-        [self.nameButton addTarget:self action:@selector(didTapUserButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+        self.nameButton.backgroundColor = [UIColor clearColor];
+        self.nameButton.titleLabel.font = [UIFont boldSystemFontOfSize:16.0f];
+        self.nameButton.titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+        [self.nameButton setTitleColor:[UIColor whiteColor]
+                              forState:UIControlStateNormal];
+        [self.nameButton setTitleColor:[UIColor colorWithRed:114.0f/255.0f green:114.0f/255.0f blue:114.0f/255.0f alpha:1.0f]
+                              forState:UIControlStateHighlighted];
+        [self.nameButton addTarget:self action:@selector(didTapUserButtonAction:)
+                  forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:self.nameButton];
         
         self.photoLabel = [[UILabel alloc] init];
-        [self.photoLabel setFont:[UIFont systemFontOfSize:11.0f]];
-        [self.photoLabel setTextColor:[UIColor grayColor]];
-        [self.photoLabel setBackgroundColor:[UIColor clearColor]];
-        [self.photoLabel setShadowColor:[UIColor colorWithWhite:1.0f alpha:0.700f]];
-        [self.photoLabel setShadowOffset:CGSizeMake( 0.0f, 1.0f)];
+        self.photoLabel.font = [UIFont systemFontOfSize:11.0f];
+        self.photoLabel.textColor = [UIColor grayColor];
+        self.photoLabel.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:self.photoLabel];
         
         self.followButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [self.followButton.titleLabel setFont:[UIFont boldSystemFontOfSize:15.0f]];
-        [self.followButton setTitleEdgeInsets:UIEdgeInsetsMake( 0.0f, 10.0f, 0.0f, 0.0f)];
-        [self.followButton setBackgroundImage:[UIImage imageNamed:@"ButtonFollow.png"] forState:UIControlStateNormal];
-        [self.followButton setBackgroundImage:[UIImage imageNamed:@"ButtonFollowing.png"] forState:UIControlStateSelected];
-        [self.followButton setImage:[UIImage imageNamed:@"IconTick.png"] forState:UIControlStateSelected];
-        [self.followButton setTitle:@"Follow  " forState:UIControlStateNormal]; // space added for centering
-        [self.followButton setTitle:@"Following" forState:UIControlStateSelected];
-        [self.followButton setTitleColor:[UIColor colorWithRed:84.0f/255.0f green:57.0f/255.0f blue:45.0f/255.0f alpha:1.0f] forState:UIControlStateNormal];
-        [self.followButton setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
-        [self.followButton setTitleShadowColor:[UIColor colorWithRed:232.0f/255.0f green:203.0f/255.0f blue:168.0f/255.0f alpha:1.0f] forState:UIControlStateNormal];
-        [self.followButton setTitleShadowColor:[UIColor blackColor] forState:UIControlStateSelected];
-        [self.followButton.titleLabel setShadowOffset:CGSizeMake( 0.0f, -1.0f)];
-        [self.followButton addTarget:self action:@selector(didTapFollowButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+        self.followButton.titleLabel.font = [UIFont boldSystemFontOfSize:15.0f];
+        self.followButton.titleEdgeInsets = UIEdgeInsetsMake( 0.0f, 10.0f, 0.0f, 0.0f);
+        [self.followButton setBackgroundImage:[UIImage imageNamed:@"ButtonFollow.png"]
+                                     forState:UIControlStateNormal];
+        [self.followButton setBackgroundImage:[UIImage imageNamed:@"ButtonFollowing.png"]
+                                     forState:UIControlStateSelected];
+        [self.followButton setImage:[UIImage imageNamed:@"IconTick.png"]
+                           forState:UIControlStateSelected];
+        [self.followButton setTitle:NSLocalizedString(@"Follow  ", @"Follow string, with spaces added for centering")
+                           forState:UIControlStateNormal];
+        [self.followButton setTitle:@"Following"
+                           forState:UIControlStateSelected];
+        [self.followButton setTitleColor:[UIColor colorWithRed:254.0f/255.0f green:149.0f/255.0f blue:50.0f/255.0f alpha:1.0f]
+                                forState:UIControlStateNormal];
+        [self.followButton setTitleColor:[UIColor whiteColor]
+                                forState:UIControlStateSelected];
+        [self.followButton addTarget:self action:@selector(didTapFollowButtonAction:)
+                    forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:self.followButton];
     }
     return self;
@@ -90,18 +97,28 @@
     user = aUser;
     
     // Configure the cell
-    [avatarImageView setFile:[self.user objectForKey:kPAPUserProfilePicSmallKey]];
+    if ([PAPUtility userHasProfilePictures:self.user]) {
+        [self.avatarImageView setFile:[self.user objectForKey:kPAPUserProfilePicSmallKey]];
+    } else {
+        [self.avatarImageView setImage:[PAPUtility defaultProfilePicture]];
+    }
     
     // Set name 
     NSString *nameString = [self.user objectForKey:kPAPUserDisplayNameKey];
-    CGSize nameSize = [nameString sizeWithFont:[UIFont boldSystemFontOfSize:16.0f] forWidth:144.0f lineBreakMode:UILineBreakModeTailTruncation];
+    CGSize nameSize = [nameString boundingRectWithSize:CGSizeMake(144.0f, CGFLOAT_MAX)
+                                                    options:NSStringDrawingTruncatesLastVisibleLine|NSStringDrawingUsesLineFragmentOrigin
+                                                 attributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:16.0f]}
+                                                    context:nil].size;
     [nameButton setTitle:[self.user objectForKey:kPAPUserDisplayNameKey] forState:UIControlStateNormal];
     [nameButton setTitle:[self.user objectForKey:kPAPUserDisplayNameKey] forState:UIControlStateHighlighted];
 
     [nameButton setFrame:CGRectMake( 60.0f, 17.0f, nameSize.width, nameSize.height)];
     
     // Set photo number label
-    CGSize photoLabelSize = [@"photos" sizeWithFont:[UIFont systemFontOfSize:11.0f] forWidth:144.0f lineBreakMode:UILineBreakModeTailTruncation];
+    CGSize photoLabelSize = [@"photos" boundingRectWithSize:CGSizeMake(144.0f, CGFLOAT_MAX)
+                                                    options:NSStringDrawingTruncatesLastVisibleLine|NSStringDrawingUsesLineFragmentOrigin
+                                                 attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:11.0f]}
+                                                    context:nil].size;
     [photoLabel setFrame:CGRectMake( 60.0f, 17.0f + nameSize.height, 140.0f, photoLabelSize.height)];
     
     // Set follow button

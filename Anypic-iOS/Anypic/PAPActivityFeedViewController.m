@@ -3,6 +3,7 @@
 //  Anypic
 //
 //  Created by Mattieu Gamache-Asselin on 5/9/12.
+//  Copyright (c) 2013 Parse. All rights reserved.
 //
 
 #import "PAPActivityFeedViewController.h"
@@ -15,6 +16,7 @@
 #import "PAPSettingsButtonItem.h"
 #import "PAPFindFriendsViewController.h"
 #import "MBProgressHUD.h"
+#import "AppDelegate.h"
 
 @interface PAPActivityFeedViewController ()
 
@@ -22,11 +24,6 @@
 @property (nonatomic, strong) NSDate *lastRefresh;
 @property (nonatomic, strong) UIView *blankTimelineView;
 @end
-
-static NSString *const kPAPActivityTypeLikeString = @"liked your photo";
-static NSString *const kPAPActivityTypeCommentString = @"commented on your photo";
-static NSString *const kPAPActivityTypeFollowString = @"started following you";
-static NSString *const kPAPActivityTypeJoinedString = @"joined Anypic";
 
 @implementation PAPActivityFeedViewController
 
@@ -44,16 +41,19 @@ static NSString *const kPAPActivityTypeJoinedString = @"joined Anypic";
     self = [super initWithStyle:style];
     if (self) {
         // The className to query on
-        self.className = kPAPActivityClassKey;
-        
-        // Whether the built-in pull-to-refresh is enabled
-        self.pullToRefreshEnabled = YES;
+        self.parseClassName = kPAPActivityClassKey;
         
         // Whether the built-in pagination is enabled
         self.paginationEnabled = YES;
         
+        // Whether the built-in pull-to-refresh is enabled
+        self.pullToRefreshEnabled = YES;
+
         // The number of objects to show per page
-        self.objectsPerPage = 15;          
+        self.objectsPerPage = 15;
+
+        // The Loading text clashes with the dark Anypic design
+        self.loadingViewEnabled = NO;
     }
     return self;
 }
@@ -62,12 +62,12 @@ static NSString *const kPAPActivityTypeJoinedString = @"joined Anypic";
 #pragma mark - UIViewController
 
 - (void)viewDidLoad {
-    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
 
     [super viewDidLoad];
     
     UIView *texturedBackgroundView = [[UIView alloc] initWithFrame:self.view.bounds];
-    [texturedBackgroundView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"BackgroundLeather.png"]]];
+    [texturedBackgroundView setBackgroundColor:[UIColor blackColor]];
     self.tableView.backgroundView = texturedBackgroundView;
 
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"LogoNavigationBar.png"]];
@@ -88,6 +88,14 @@ static NSString *const kPAPActivityTypeJoinedString = @"joined Anypic";
     lastRefresh = [[NSUserDefaults standardUserDefaults] objectForKey:kPAPUserDefaultsActivityFeedViewControllerLastRefreshKey];
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.tableView.separatorColor = [UIColor colorWithRed:30.0f/255.0f green:30.0f/255.0f blue:30.0f/255.0f alpha:1.0f];
+}
 
 #pragma mark - UITableViewDelegate
 
@@ -95,10 +103,10 @@ static NSString *const kPAPActivityTypeJoinedString = @"joined Anypic";
     if (indexPath.row < self.objects.count) {
         PFObject *object = [self.objects objectAtIndex:indexPath.row];
         NSString *activityString = [PAPActivityFeedViewController stringForActivityType:(NSString*)[object objectForKey:kPAPActivityTypeKey]];
-        PFUser *user = (PFUser*)[object objectForKey:kPAPActivityFromUserKey];
-        NSString *nameString = @"";
 
-        if (user) {
+        PFUser *user = (PFUser*)[object objectForKey:kPAPActivityFromUserKey];
+        NSString *nameString = NSLocalizedString(@"Someone", nil);
+        if (user && [user objectForKey:kPAPUserDisplayNameKey] && [[user objectForKey:kPAPUserDisplayNameKey] length] > 0) {
             nameString = [user objectForKey:kPAPUserDisplayNameKey];
         }
         
@@ -117,6 +125,7 @@ static NSString *const kPAPActivityTypeJoinedString = @"joined Anypic";
             [self.navigationController pushViewController:detailViewController animated:YES];
         } else if ([activity objectForKey:kPAPActivityFromUserKey]) {
             PAPAccountViewController *detailViewController = [[PAPAccountViewController alloc] initWithStyle:UITableViewStylePlain];
+            NSLog(@"Presenting account view controller with user: %@", [activity objectForKey:kPAPActivityFromUserKey]);
             [detailViewController setUser:[activity objectForKey:kPAPActivityFromUserKey]];
             [self.navigationController pushViewController:detailViewController animated:YES];
         }
@@ -131,12 +140,12 @@ static NSString *const kPAPActivityTypeJoinedString = @"joined Anypic";
 - (PFQuery *)queryForTable {
     
     if (![PFUser currentUser]) {
-        PFQuery *query = [PFQuery queryWithClassName:self.className];
+        PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
         [query setLimit:0];
         return query;
     }
 
-    PFQuery *query = [PFQuery queryWithClassName:self.className];
+    PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
     [query whereKey:kPAPActivityToUserKey equalTo:[PFUser currentUser]];
     [query whereKey:kPAPActivityFromUserKey notEqualTo:[PFUser currentUser]];
     [query whereKeyExists:kPAPActivityFromUserKey];
@@ -151,17 +160,15 @@ static NSString *const kPAPActivityTypeJoinedString = @"joined Anypic";
     //
     // If there is no network connection, we will hit the cache first.
     if (self.objects.count == 0 || ![[UIApplication sharedApplication].delegate performSelector:@selector(isParseReachable)]) {
-        NSLog(@"Loading from cache");
         [query setCachePolicy:kPFCachePolicyCacheThenNetwork];
     }
     
-
     return query;
 }
 
 - (void)objectsDidLoad:(NSError *)error {
     [super objectsDidLoad:error];
-    
+
     lastRefresh = [NSDate date];
     [[NSUserDefaults standardUserDefaults] setObject:lastRefresh forKey:kPAPUserDefaultsActivityFeedViewControllerLastRefreshKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
@@ -192,7 +199,7 @@ static NSString *const kPAPActivityTypeJoinedString = @"joined Anypic";
         }
         
         if (unreadCount > 0) {
-            self.navigationController.tabBarItem.badgeValue = [NSString stringWithFormat:@"%d",unreadCount];
+            self.navigationController.tabBarItem.badgeValue = [NSString stringWithFormat:@"%lu",(unsigned long)unreadCount];
         } else {
             self.navigationController.tabBarItem.badgeValue = nil;
         }
@@ -206,10 +213,10 @@ static NSString *const kPAPActivityTypeJoinedString = @"joined Anypic";
     if (cell == nil) {
         cell = [[PAPActivityCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         [cell setDelegate:self];
-        [cell setSelectionStyle:UITableViewCellSelectionStyleGray];
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     }
 
-    [cell setActivity:object];
+    [cell setActivity:object];;
 
     if ([lastRefresh compare:[object createdAt]] == NSOrderedAscending) {
         [cell setIsNew:YES];
@@ -228,7 +235,7 @@ static NSString *const kPAPActivityTypeJoinedString = @"joined Anypic";
     PAPLoadMoreCell *cell = [tableView dequeueReusableCellWithIdentifier:LoadMoreCellIdentifier];
     if (!cell) {
         cell = [[PAPLoadMoreCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:LoadMoreCellIdentifier];
-        cell.selectionStyle = UITableViewCellSelectionStyleGray;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.hideSeparatorBottom = YES;
         cell.mainView.backgroundColor = [UIColor clearColor];
    }
@@ -250,6 +257,7 @@ static NSString *const kPAPActivityTypeJoinedString = @"joined Anypic";
 - (void)cell:(PAPBaseTextCell *)cellView didTapUserButton:(PFUser *)user {    
     // Push account view controller
     PAPAccountViewController *accountViewController = [[PAPAccountViewController alloc] initWithStyle:UITableViewStylePlain];
+    NSLog(@"Presenting account view controller with user: %@", user);
     [accountViewController setUser:user];
     [self.navigationController pushViewController:accountViewController animated:YES];
 }
@@ -259,25 +267,24 @@ static NSString *const kPAPActivityTypeJoinedString = @"joined Anypic";
 
 + (NSString *)stringForActivityType:(NSString *)activityType {
     if ([activityType isEqualToString:kPAPActivityTypeLike]) {
-        return kPAPActivityTypeLikeString;
+        return NSLocalizedString(@"liked your photo", nil);
     } else if ([activityType isEqualToString:kPAPActivityTypeFollow]) {
-        return kPAPActivityTypeFollowString;
+        return NSLocalizedString(@"started following you", nil);
     } else if ([activityType isEqualToString:kPAPActivityTypeComment]) {
-        return kPAPActivityTypeCommentString;
+        return NSLocalizedString(@"commented on your photo", nil);
     } else if ([activityType isEqualToString:kPAPActivityTypeJoined]) {
-        return kPAPActivityTypeJoinedString;
+        return NSLocalizedString(@"joined Anypic", nil);
     } else {
         return nil;
     }
 }
 
+
 #pragma mark - ()
-
-
 
 - (void)settingsButtonAction:(id)sender {
     settingsActionSheetDelegate = [[PAPSettingsActionSheetDelegate alloc] initWithNavigationController:self.navigationController];
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:settingsActionSheetDelegate cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"My Profile", @"Find Friends", @"Log Out", nil];
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:settingsActionSheetDelegate cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"My Profile", nil), NSLocalizedString(@"Find Friends", nil), NSLocalizedString(@"Log Out", nil), nil];
     
     [actionSheet showFromTabBar:self.tabBarController.tabBar];
 }

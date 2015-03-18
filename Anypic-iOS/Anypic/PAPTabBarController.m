@@ -3,6 +3,7 @@
 //  Anypic
 //
 //  Created by Héctor Ramos on 5/15/12.
+//  Copyright (c) 2013 Parse. All rights reserved.
 //
 
 #import "PAPTabBarController.h"
@@ -20,11 +21,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [[self tabBar] setBackgroundImage:[UIImage imageNamed:@"BackgroundTabBar.png"]];
-    [[self tabBar] setSelectionIndicatorImage:[UIImage imageNamed:@"BackgroundTabBarItemSelected.png"]];
+    //[[self tabBar] setBackgroundImage:[UIImage imageNamed:@"BackgroundTabBar.png"]];
+//    [[self tabBar] setSelectionIndicatorImage:[UIImage imageNamed:@"BackgroundTabBarItemSelected.png"]];
+   // self.tabBar.tintColor = [UIColor colorWithRed:139.0f/255.0f green:111.0f/255.0f blue:95.0f/255.0f alpha:1.0f];
     
+    
+     // iOS 7 style
+     self.tabBar.tintColor = [UIColor colorWithRed:254.0f/255.0f green:149.0f/255.0f blue:50.0f/255.0f alpha:1.0f];
+     self.tabBar.barTintColor = [UIColor colorWithRed:0.0f/255.0f green:0.0f/255.0f blue:0.0f/255.0f alpha:1.0f];
+     
     self.navController = [[UINavigationController alloc] init];
-    [PAPUtility addBottomDropShadowToNavigationBarForNavigationController:self.navController];
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
 }
 
 
@@ -50,11 +60,11 @@
 #pragma mark - UIImagePickerDelegate
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    [self dismissModalViewControllerAnimated:NO];
+    [self dismissViewControllerAnimated:NO completion:nil];
     
     UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
      
@@ -64,7 +74,7 @@
     [self.navController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
     [self.navController pushViewController:viewController animated:NO];
     
-    [self presentModalViewController:self.navController animated:YES];
+    [self presentViewController:self.navController animated:YES completion:nil];
 }
 
 #pragma mark - UIActionSheetDelegate
@@ -133,8 +143,8 @@
     cameraUI.allowsEditing = YES;
     cameraUI.showsCameraControls = YES;
     cameraUI.delegate = self;
-    
-    [self presentModalViewController:cameraUI animated:YES];
+
+    [self presentViewController:cameraUI animated:YES completion:nil];
     
     return YES;
 }
@@ -166,7 +176,7 @@
     cameraUI.allowsEditing = YES;
     cameraUI.delegate = self;
     
-    [self presentModalViewController:cameraUI animated:YES];
+    [self presentViewController:cameraUI animated:YES completion:nil];
     
     return YES;
 }

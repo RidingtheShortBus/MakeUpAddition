@@ -9,15 +9,6 @@
 #import "UIImage+RoundedCornerAdditions.h"
 #import "UIImage+AlphaAdditions.h"
 
-// Private helper methods
-@interface UIImage ()
-- (UIImage *)resizedImage:(CGSize)newSize
-                transform:(CGAffineTransform)transform
-           drawTransposed:(BOOL)transpose
-     interpolationQuality:(CGInterpolationQuality)quality;
-- (CGAffineTransform)transformForOrientation:(CGSize)newSize;
-@end
-
 @implementation UIImage (Resize)
 
 // Returns a copy of this image that is cropped to the given bounds.
@@ -95,7 +86,7 @@
             break;
             
         default:
-            [NSException raise:NSInvalidArgumentException format:@"Unsupported content mode: %d", contentMode];
+            [NSException raise:NSInvalidArgumentException format:@"Unsupported content mode"];
     }
     
     CGSize newSize = CGSizeMake(self.size.width * ratio, self.size.height * ratio);

@@ -3,6 +3,7 @@
 //  Anypic
 //
 //  Created by Mattieu Gamache-Asselin on 5/14/12.
+//  Copyright (c) 2013 Parse. All rights reserved.
 //
 
 #import "PAPImageView.h"
@@ -22,8 +23,6 @@
 #pragma mark - PAPImageView
 
 - (void) setFile:(PFFile *)file {
-    UIImageView *border = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ShadowsProfilePicture-43.png"]];
-    [self addSubview:border];
     
     NSString *requestURL = file.url; // Save copy of url locally (will not change in block)
     [self setUrl:file.url]; // Save copy of url on the instance

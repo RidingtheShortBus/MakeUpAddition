@@ -3,6 +3,7 @@
 //  Anypic
 //
 //  Created by Mattieu Gamache-Asselin on 5/25/12.
+//  Copyright (c) 2013 Parse. All rights reserved.
 //
 
 typedef enum {
@@ -10,6 +11,20 @@ typedef enum {
 	PAPEmptyTabBarItemIndex = 1,
 	PAPActivityTabBarItemIndex = 2
 } PAPTabBarControllerViewControllerIndex;
+
+
+// Ilya     400680
+// James    403902
+// David    1225726
+// Bryan    4806789
+// Thomas   6409809
+// Ashley   12800553
+// Héctor   121800083
+// Kevin    500011038
+// Chris    558159381
+// Matt     723748661
+
+#define kPAPParseEmployeeAccounts [NSArray arrayWithObjects:@"400680", @"403902", @"1225726", @"4806789", @"6409809", @"12800553", @"121800083", @"500011038", @"558159381", @"723748661", nil]
 
 #pragma mark - NSUserDefaults
 extern NSString *const kPAPUserDefaultsActivityFeedViewControllerLastRefreshKey;
@@ -41,7 +56,6 @@ extern NSString *const kPAPEditPhotoViewControllerUserInfoCommentKey;
 
 // Field keys
 extern NSString *const kPAPInstallationUserKey;
-extern NSString *const kPAPInstallationChannelsKey;
 
 
 #pragma mark - PFObject Activity Class
@@ -69,9 +83,10 @@ extern NSString *const kPAPUserFacebookIDKey;
 extern NSString *const kPAPUserPhotoIDKey;
 extern NSString *const kPAPUserProfilePicSmallKey;
 extern NSString *const kPAPUserProfilePicMediumKey;
+extern NSString *const kPAPUserFacebookFriendsKey;
 extern NSString *const kPAPUserAlreadyAutoFollowedFacebookFriendsKey;
-extern NSString *const kPAPUserPrivateChannelKey;
-
+extern NSString *const kPAPUserEmailKey;
+extern NSString *const kPAPUserAutoFollowKey;
 
 #pragma mark - PFObject Photo Class
 // Class key
@@ -81,6 +96,7 @@ extern NSString *const kPAPPhotoClassKey;
 extern NSString *const kPAPPhotoPictureKey;
 extern NSString *const kPAPPhotoThumbnailKey;
 extern NSString *const kPAPPhotoUserKey;
+extern NSString *const kPAPPhotoOpenGraphIDKey;
 
 
 #pragma mark - Cached Photo Attributes

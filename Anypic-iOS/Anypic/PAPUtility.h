@@ -3,6 +3,7 @@
 //  Anypic
 //
 //  Created by Mattieu Gamache-Asselin on 5/18/12.
+//  Copyright (c) 2013 Parse. All rights reserved.
 //
 
 @interface PAPUtility : NSObject
@@ -14,6 +15,7 @@
 
 + (BOOL)userHasValidFacebookData:(PFUser *)user;
 + (BOOL)userHasProfilePictures:(PFUser *)user;
++ (UIImage *)defaultProfilePicture;
 
 + (NSString *)firstNameForDisplayName:(NSString *)displayName;
 
@@ -23,12 +25,9 @@
 + (void)unfollowUserEventually:(PFUser *)user;
 + (void)unfollowUsersEventually:(NSArray *)users;
 
-+ (void)sendFollowingPushNotification:(PFUser *)user;
-
 + (void)drawSideDropShadowForRect:(CGRect)rect inContext:(CGContextRef)context;
 + (void)drawSideAndBottomDropShadowForRect:(CGRect)rect inContext:(CGContextRef)context;
 + (void)drawSideAndTopDropShadowForRect:(CGRect)rect inContext:(CGContextRef)context;  
-+ (void)addBottomDropShadowToNavigationBarForNavigationController:(UINavigationController *)navigationController;
 
 + (PFQuery *)queryForActivitiesOnPhoto:(PFObject *)photo cachePolicy:(PFCachePolicy)cachePolicy;
 @end
