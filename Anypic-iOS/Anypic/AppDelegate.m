@@ -44,7 +44,7 @@
     // ****************************************************************************
     // Parse initialization
     [ParseCrashReporting enable];
-    [Parse setApplicationId:@"PklSbwxITu46cOumt6tdWw8Jtg2urg0vj0CrbLr0" clientKey:@"ML2sjwLC7k1RCujNCRP7fxG2HpUxtwzdIR1ElOe7"];
+    [Parse setApplicationId:@"gRnRVbcEZFcNqf0W9vmwgyLUyNsHEgIbfIDOhETZ" clientKey:@"ODishlADPGuqa9DbuZMyBCIxuK9mpDCi1shQagh6"];
     [PFFacebookUtils initializeFacebook];
     // ****************************************************************************
   
