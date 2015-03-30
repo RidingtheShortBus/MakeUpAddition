@@ -20,6 +20,6 @@ Resources/Configuration/Private.xcconfig
 .sass-cache
 
 # Cocoapods
-Pods
-Podfile.lock
-Anypic.xcworkspace
+#Pods
+#Podfile.lock
+#Anypic.xcworkspace
