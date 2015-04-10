@@ -23,6 +23,7 @@
 		74B108A7156D7509005B421C /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74B108A6156D7509005B421C /* AddressBookUI.framework */; };
 		74B108A9156D7510005B421C /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74B108A8156D7510005B421C /* MessageUI.framework */; };
 		74B108AB156D7CC2005B421C /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74B108AA156D7CC2005B421C /* AddressBook.framework */; };
+		A16242AD1AD82EF70083C424 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A16242AC1AD82EF70083C424 /* ParseUI.framework */; };
 		C4217BC01552230500CD3A47 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4217BBF1552230500CD3A47 /* AVFoundation.framework */; };
 		C42500DC159939940087C4F4 /* Icon-Small-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C42500DB159939940087C4F4 /* Icon-Small-50@2x.png */; };
 		C45C260715671D730035BCA6 /* PlaceholderPhoto.png in Resources */ = {isa = PBXBuildFile; fileRef = C45C260515671D730035BCA6 /* PlaceholderPhoto.png */; };
@@ -169,6 +170,7 @@
 		74B108A6156D7509005B421C /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		74B108A8156D7510005B421C /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		74B108AA156D7CC2005B421C /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		A16242AC1AD82EF70083C424 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		C402FEC51602AE3100273778 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		C4217BBF1552230500CD3A47 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		C4217BC11552234E00CD3A47 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
@@ -360,6 +362,7 @@
 				09ABC07613A1D52D009C3FCF /* CoreGraphics.framework in Frameworks */,
 				09ABC07213A1D52D009C3FCF /* UIKit.framework in Frameworks */,
 				09ABC07413A1D52D009C3FCF /* Foundation.framework in Frameworks */,
+				A16242AD1AD82EF70083C424 /* ParseUI.framework in Frameworks */,
 				6A8214C1351C3110D3BB7520 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -389,6 +392,7 @@
 		09ABC07013A1D52D009C3FCF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A16242AC1AD82EF70083C424 /* ParseUI.framework */,
 				E71D17E41A2E95470099D2C8 /* libstdc++.6.dylib */,
 				E7BB90F9177BDBE6000A68F9 /* Accelerate.framework */,
 				C4C9B94616B877AE00BB2862 /* AdSupport.framework */,
@@ -1059,6 +1063,7 @@
 					"$(SRCROOT)",
 					"$(SRCROOT)/Vendor",
 					"$(PROJECT_DIR)/Vendor",
+					"$(PROJECT_DIR)",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1094,6 +1099,7 @@
 					"$(SRCROOT)",
 					"$(SRCROOT)/Vendor",
 					"$(PROJECT_DIR)/Vendor",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Prefix.pch;
@@ -1154,6 +1160,7 @@
 					"$(SRCROOT)",
 					"$(SRCROOT)/Vendor",
 					"$(PROJECT_DIR)/Vendor",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Prefix.pch;
@@ -1217,6 +1224,7 @@
 					"$(SRCROOT)",
 					"$(SRCROOT)/Vendor",
 					"$(PROJECT_DIR)/Vendor",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Prefix.pch;
