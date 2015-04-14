@@ -1,5 +1,5 @@
 //
-//  pvcFeed_Entry.swift
+//  pvcHome_Entry.swift
 //  MakeupAddiction
 //
 //  Created by Stephen Shellenberger on 4/10/15.
@@ -9,20 +9,9 @@
 import Foundation;
 import UIKit;
 
-class pvcFeed_Entry : UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate
+class pvcHome_Entry : UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate
 {
-    var identifiers: NSArray = ["sbidFeed_LatestActivity", "sbidFeed_Following", "sbidFeed_MostRecent"];
-    
-    override init(transitionStyle style: UIPageViewControllerTransitionStyle
-        , navigationOrientation: UIPageViewControllerNavigationOrientation
-        , options: [NSObject : AnyObject]?)
-    {
-        super.init(transitionStyle: style, navigationOrientation: navigationOrientation, options: options);
-    }
-
-    required init(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    var identifiers: NSArray = ["sbidHome_Trending", "sbidHome_Following", "sbidHome_MostRecent", "sbidHome_Reviews"];
     
     override func viewDidLoad()
     {
@@ -36,10 +25,6 @@ class pvcFeed_Entry : UIPageViewController, UIPageViewControllerDataSource, UIPa
         let pageControl = UIPageControl.appearance();
         pageControl.pageIndicatorTintColor = UIColor.lightGrayColor();
         pageControl.currentPageIndicatorTintColor = UIColor.blackColor();
-        
-        self.tabBarItem = UITabBarItem(title: "Feed"
-            , image:UIImage(named: "someImage.png")
-            , selectedImage: UIImage(named: "otherImage.png"));
     }
     
     override func didReceiveMemoryWarning() {
@@ -101,7 +86,7 @@ class pvcFeed_Entry : UIPageViewController, UIPageViewControllerDataSource, UIPa
         NSLog("viewControllerAtIndex{%@}", (self.identifiers[idx] as! String));
         //first view controller = firstViewControllers navigation controller
         
-        var storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+        var storyboard:UIStoryboard = UIStoryboard(name: "Home", bundle: nil);
         var vc:UIViewController = storyboard.instantiateViewControllerWithIdentifier(self.identifiers[idx] as! String) as! UIViewController;
         return vc;
 
