@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="DDG-Dv-7eQ">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Tab Bar Global-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController storyboardIdentifier="sbidMain_Controller" title="Tab Bar Global" id="49e-Tb-3d3" customClass="tbcMain" customModule="MakeupAddiction" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="sbidMain_Navigation" title="Tab Bar Global" useStoryboardIdentifierAsRestorationIdentifier="YES" id="49e-Tb-3d3" customClass="tbcMain_Navigation" customModule="MakeupAddiction" customModuleProvider="target" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
@@ -19,5 +20,113 @@
             </objects>
             <point key="canvasLocation" x="399" y="-35"/>
         </scene>
+        <!--Main Entry-->
+        <scene sceneID="qGh-OI-T0T">
+            <objects>
+                <viewController storyboardIdentifier="sbidMain Entry" title="Main Entry" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DDG-Dv-7eQ" customClass="vcMain_Entry" customModule="MakeupAddiction" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Uyt-Sy-HzN"/>
+                        <viewControllerLayoutGuide type="bottom" id="nPS-BV-Aom"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="NDh-wZ-YC7">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultmabackground1242@3x.png" translatesAutoresizingMaskIntoConstraints="NO" id="96z-lj-hEC">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="400" height="800"/>
+                                </variation>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5NY-bd-rJf">
+                                <rect key="frame" x="88" y="550" width="424" height="30"/>
+                                <color key="backgroundColor" red="0.9490196704864502" green="0.54117649793624878" blue="0.80392163991928101" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="GZ0-SN-qRW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <state key="normal" title="Login by Email">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="49e-Tb-3d3" kind="show" id="VDq-uP-RZX"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nou-x5-eWV">
+                                <rect key="frame" x="88" y="512" width="424" height="30"/>
+                                <color key="backgroundColor" red="0.17254902420000001" green="0.43921571970000001" blue="0.64705884459999996" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="yE8-Yt-ggG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <state key="normal" title="Facebook">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tmp-v9-YK0">
+                                <rect key="frame" x="88" y="474" width="424" height="30"/>
+                                <color key="backgroundColor" red="0.92941182851791382" green="0.68235296010971069" blue="0.46666669845581055" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="DQd-Qd-H5X"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <state key="normal" title="Instagram">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rxr-a0-jmY">
+                                <rect key="frame" x="88" y="436" width="424" height="30"/>
+                                <color key="backgroundColor" red="0.43137258291244507" green="0.71764707565307617" blue="0.89803928136825562" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="CIC-IO-z9i"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <state key="normal" title="Twitter">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="5NY-bd-rJf" firstAttribute="top" secondItem="Nou-x5-eWV" secondAttribute="bottom" constant="8" id="CKX-Nn-dMD"/>
+                            <constraint firstItem="Nou-x5-eWV" firstAttribute="top" secondItem="Tmp-v9-YK0" secondAttribute="bottom" constant="8" id="DNJ-c5-gh4"/>
+                            <constraint firstItem="Nou-x5-eWV" firstAttribute="leading" secondItem="NDh-wZ-YC7" secondAttribute="leadingMargin" constant="72" id="FjY-yR-jae"/>
+                            <constraint firstItem="Tmp-v9-YK0" firstAttribute="leading" secondItem="5NY-bd-rJf" secondAttribute="leading" id="Fln-fn-fR0"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Rxr-a0-jmY" secondAttribute="trailing" constant="72" id="KTr-M6-mnI"/>
+                            <constraint firstItem="5NY-bd-rJf" firstAttribute="leading" secondItem="NDh-wZ-YC7" secondAttribute="leadingMargin" constant="72" id="LEL-Rq-ggs"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Nou-x5-eWV" secondAttribute="trailing" constant="72" id="Lw4-Fy-fEn"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5NY-bd-rJf" secondAttribute="trailing" constant="72" id="Qdw-xm-mpI"/>
+                            <constraint firstItem="nPS-BV-Aom" firstAttribute="top" secondItem="5NY-bd-rJf" secondAttribute="bottom" constant="20" id="XhO-Uq-fh5"/>
+                            <constraint firstItem="Rxr-a0-jmY" firstAttribute="leading" secondItem="NDh-wZ-YC7" secondAttribute="leadingMargin" constant="72" id="YEl-9t-ZXc"/>
+                            <constraint firstItem="Tmp-v9-YK0" firstAttribute="centerX" secondItem="NDh-wZ-YC7" secondAttribute="centerX" id="amz-l2-5Fz"/>
+                            <constraint firstItem="Tmp-v9-YK0" firstAttribute="leading" secondItem="Nou-x5-eWV" secondAttribute="leading" id="gnY-2Z-MlD"/>
+                            <constraint firstItem="Tmp-v9-YK0" firstAttribute="leading" secondItem="Rxr-a0-jmY" secondAttribute="leading" id="ilh-gT-SEB"/>
+                            <constraint firstItem="Tmp-v9-YK0" firstAttribute="leading" secondItem="NDh-wZ-YC7" secondAttribute="leadingMargin" constant="72" id="nNd-ph-kDL"/>
+                            <constraint firstItem="Tmp-v9-YK0" firstAttribute="top" secondItem="Rxr-a0-jmY" secondAttribute="bottom" constant="8" id="xCj-tg-6Qk"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Tmp-v9-YK0" secondAttribute="trailing" constant="72" id="xSx-dX-bYZ"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="96z-lj-hEC"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="96z-lj-hEC"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2bg-c3-Rds" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-402" y="-35"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="defaultmabackground1242@3x.png" width="1242" height="2208"/>
+    </resources>
 </document>
