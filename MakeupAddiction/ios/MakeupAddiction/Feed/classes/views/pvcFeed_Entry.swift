@@ -13,17 +13,6 @@ class pvcFeed_Entry : UIPageViewController, UIPageViewControllerDataSource, UIPa
 {
     var identifiers: NSArray = ["sbidFeed_LatestActivity", "sbidFeed_Following", "sbidFeed_MostRecent"];
     
-    override init(transitionStyle style: UIPageViewControllerTransitionStyle
-        , navigationOrientation: UIPageViewControllerNavigationOrientation
-        , options: [NSObject : AnyObject]?)
-    {
-        super.init(transitionStyle: style, navigationOrientation: navigationOrientation, options: options);
-    }
-
-    required init(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     override func viewDidLoad()
     {
         self.dataSource = self;
@@ -101,7 +90,7 @@ class pvcFeed_Entry : UIPageViewController, UIPageViewControllerDataSource, UIPa
         NSLog("viewControllerAtIndex{%@}", (self.identifiers[idx] as! String));
         //first view controller = firstViewControllers navigation controller
         
-        var storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+        var storyboard:UIStoryboard = UIStoryboard(name: "Feed", bundle: nil);
         var vc:UIViewController = storyboard.instantiateViewControllerWithIdentifier(self.identifiers[idx] as! String) as! UIViewController;
         return vc;
 

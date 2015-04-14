@@ -3,5 +3,160 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
     </dependencies>
-    <scenes/>
+    <scenes>
+        <!--Feed Entry-->
+        <scene sceneID="kaV-kx-bQL">
+            <objects>
+                <pageViewController storyboardIdentifier="sbidFeed_Entry" autoresizesArchivedViewToFullSize="NO" title="Feed Entry" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="gHO-7W-U4S" customClass="pvcFeed_Entry" customModule="MakeupAddiction" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="O9e-Oa-6Vd"/>
+                </pageViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y9G-tM-TE4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1245" y="-35.25"/>
+        </scene>
+        <!--Feed Latest Activty-->
+        <scene sceneID="WL6-gB-BiZ">
+            <objects>
+                <viewController storyboardIdentifier="sbidFeed_LatestActivity" title="Feed Latest Activty" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rau-IR-AKx" customClass="vcFeed_LatestActivity" customModule="MakeupAddiction" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="LAA-ZD-NSh"/>
+                        <viewControllerLayoutGuide type="bottom" id="7Gm-3v-2rg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vzQ-sf-7ZP">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultmabackground1242@3x.png" translatesAutoresizingMaskIntoConstraints="NO" id="P7I-Ic-ofT">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="400" height="800"/>
+                                </variation>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Latest Activity" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Kp-FU-YJV">
+                                <rect key="frame" x="16" y="20" width="122" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="10" y="10" width="122" height="21"/>
+                                </variation>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="P7I-Ic-ofT"/>
+                                <exclude reference="8Kp-FU-YJV"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="P7I-Ic-ofT"/>
+                                <include reference="8Kp-FU-YJV"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xtB-H1-hzr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2038.5" y="-360"/>
+        </scene>
+        <!--Feed Following-->
+        <scene sceneID="INU-nr-9Jg">
+            <objects>
+                <viewController storyboardIdentifier="sbidFeed_Following" title="Feed Following" useStoryboardIdentifierAsRestorationIdentifier="YES" id="myK-zO-xoa" customClass="vcFeed_Following" customModule="MakeupAddiction" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="HWD-Qz-wRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="4lo-WV-PLp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7pz-cM-NaG">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultmabackground1242@3x.png" translatesAutoresizingMaskIntoConstraints="NO" id="y8U-VS-iou">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="400" height="800"/>
+                                </variation>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Following" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BBp-HU-8xj">
+                                <rect key="frame" x="16" y="20" width="122" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="10" y="10" width="122" height="21"/>
+                                </variation>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="y8U-VS-iou"/>
+                                <exclude reference="BBp-HU-8xj"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="y8U-VS-iou"/>
+                                <include reference="BBp-HU-8xj"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oXg-ld-wmN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2038.5" y="337.5"/>
+        </scene>
+        <!--Feed Most Recent-->
+        <scene sceneID="4tm-Tm-SiP">
+            <objects>
+                <viewController storyboardIdentifier="sbidFeed_MostRecent" title="Feed Most Recent" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mjR-wh-6sz" customClass="vcFeed_MostRecent" customModule="MakeupAddiction" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="82z-V2-Ba7"/>
+                        <viewControllerLayoutGuide type="bottom" id="N3x-Lv-Dfh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Zoc-On-vQm">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultmabackground1242@3x.png" translatesAutoresizingMaskIntoConstraints="NO" id="25c-V8-rfa">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="400" height="800"/>
+                                </variation>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Most Recent" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Oo-HP-dmB">
+                                <rect key="frame" x="16" y="20" width="122" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="10" y="10" width="122" height="21"/>
+                                </variation>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="25c-V8-rfa"/>
+                                <exclude reference="9Oo-HP-dmB"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="25c-V8-rfa"/>
+                                <include reference="9Oo-HP-dmB"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jzf-X9-RN8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2719.5" y="-36.75"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="defaultmabackground1242@3x.png" width="1242" height="2208"/>
+    </resources>
 </document>

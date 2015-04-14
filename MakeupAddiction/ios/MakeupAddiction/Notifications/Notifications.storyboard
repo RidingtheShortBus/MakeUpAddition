@@ -4,25 +4,25 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
     </dependencies>
     <scenes>
-        <!--Profile-->
-        <scene sceneID="TJx-ch-YBp">
+        <!--Notifications-->
+        <scene sceneID="XMD-Oy-Zov">
             <objects>
-                <viewController storyboardIdentifier="sbidProfile_Entry" title="Profile" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3oE-Zu-0fq" customClass="vcProfile_Entry" customModule="MakeupAddiction" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="sbidNotifications_Entry" title="Notifications" useStoryboardIdentifierAsRestorationIdentifier="YES" id="RZV-Qf-QdF" customClass="vcNotifications_Entry" customModule="MakeupAddiction" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="LuT-n5-f8s"/>
-                        <viewControllerLayoutGuide type="bottom" id="zGB-AB-wCD"/>
+                        <viewControllerLayoutGuide type="top" id="FaR-v2-dra"/>
+                        <viewControllerLayoutGuide type="bottom" id="aRO-5x-0NF"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="w8D-t4-9rl">
+                    <view key="view" contentMode="scaleToFill" id="59w-rJ-nDb">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultmabackground1242@3x.png" translatesAutoresizingMaskIntoConstraints="NO" id="a68-Qg-6po">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultmabackground1242@3x.png" translatesAutoresizingMaskIntoConstraints="NO" id="SRb-EF-YwO">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="0.0" y="0.0" width="400" height="800"/>
                                 </variation>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XSt-TO-xNw">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifications" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kFn-pe-8kl">
                                 <rect key="frame" x="16" y="20" width="122" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -35,19 +35,19 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="a68-Qg-6po"/>
-                                <exclude reference="XSt-TO-xNw"/>
+                                <exclude reference="SRb-EF-YwO"/>
+                                <exclude reference="kFn-pe-8kl"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
-                                <include reference="a68-Qg-6po"/>
-                                <include reference="XSt-TO-xNw"/>
+                                <include reference="SRb-EF-YwO"/>
+                                <include reference="kFn-pe-8kl"/>
                             </mask>
                         </variation>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qtS-NZ-jzT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="THO-Cm-Fe7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="585" y="369"/>
         </scene>
