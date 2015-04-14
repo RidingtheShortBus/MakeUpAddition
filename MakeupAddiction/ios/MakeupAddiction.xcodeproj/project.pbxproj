@@ -22,7 +22,7 @@
 		A12119AA1AD86D66004CA9FF /* Add.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A12119A91AD86D66004CA9FF /* Add.storyboard */; };
 		A12119AC1AD86D73004CA9FF /* Discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A12119AB1AD86D73004CA9FF /* Discover.storyboard */; };
 		A12119AE1AD86D86004CA9FF /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A12119AD1AD86D86004CA9FF /* Profile.storyboard */; };
-		A12119B41AD8711E004CA9FF /* tbcMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12119B31AD8711E004CA9FF /* tbcMain.swift */; };
+		A12119B41AD8711E004CA9FF /* tbcMain_Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12119B31AD8711E004CA9FF /* tbcMain_Navigation.swift */; };
 		A12119BD1AD8C525004CA9FF /* defaultmabackground1242@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A12119BC1AD8C525004CA9FF /* defaultmabackground1242@3x.png */; };
 		A13C26D71ADD76820054DEA3 /* Activities.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A13C26CB1ADD76820054DEA3 /* Activities.storyboard */; };
 		A13C26D81ADD76820054DEA3 /* vcActivities_Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C26D31ADD76820054DEA3 /* vcActivities_Entry.swift */; };
@@ -37,6 +37,9 @@
 		A13C26F71ADD8CEB0054DEA3 /* addicon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A13C26F61ADD8CEB0054DEA3 /* addicon@3x.png */; };
 		A13C26F91ADD8CF90054DEA3 /* activityicon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A13C26F81ADD8CF90054DEA3 /* activityicon@3x.png */; };
 		A13C26FB1ADD8D080054DEA3 /* profileicon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A13C26FA1ADD8D080054DEA3 /* profileicon@3x.png */; };
+		A13C26FD1ADDB5490054DEA3 /* vcMain_Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C26FC1ADDB5480054DEA3 /* vcMain_Entry.swift */; };
+		A13C26FF1ADDBA730054DEA3 /* NotificationUpdateBadgeTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C26FE1ADDBA730054DEA3 /* NotificationUpdateBadgeTabBar.swift */; };
+		A13C27011ADDBE820054DEA3 /* vcHome_AddPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C27001ADDBE820054DEA3 /* vcHome_AddPerson.swift */; };
 		A15BE0121ADCBA6A007F6690 /* nvcDiscover_entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15BE0111ADCBA6A007F6690 /* nvcDiscover_entry.swift */; };
 		A15BE0451ADD5450007F6690 /* vcDiscover_Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15BE0441ADD5450007F6690 /* vcDiscover_Photos.swift */; };
 		A15BE0471ADD5468007F6690 /* vcDiscover_Posts.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15BE0461ADD5468007F6690 /* vcDiscover_Posts.swift */; };
@@ -75,7 +78,7 @@
 		A12119A91AD86D66004CA9FF /* Add.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Add.storyboard; sourceTree = "<group>"; };
 		A12119AB1AD86D73004CA9FF /* Discover.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Discover.storyboard; sourceTree = "<group>"; };
 		A12119AD1AD86D86004CA9FF /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
-		A12119B31AD8711E004CA9FF /* tbcMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tbcMain.swift; sourceTree = "<group>"; };
+		A12119B31AD8711E004CA9FF /* tbcMain_Navigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tbcMain_Navigation.swift; sourceTree = "<group>"; };
 		A12119BC1AD8C525004CA9FF /* defaultmabackground1242@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "defaultmabackground1242@3x.png"; sourceTree = "<group>"; };
 		A13C26CB1ADD76820054DEA3 /* Activities.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Activities.storyboard; sourceTree = "<group>"; };
 		A13C26D31ADD76820054DEA3 /* vcActivities_Entry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcActivities_Entry.swift; sourceTree = "<group>"; };
@@ -90,6 +93,9 @@
 		A13C26F61ADD8CEB0054DEA3 /* addicon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addicon@3x.png"; sourceTree = "<group>"; };
 		A13C26F81ADD8CF90054DEA3 /* activityicon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "activityicon@3x.png"; sourceTree = "<group>"; };
 		A13C26FA1ADD8D080054DEA3 /* profileicon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profileicon@3x.png"; sourceTree = "<group>"; };
+		A13C26FC1ADDB5480054DEA3 /* vcMain_Entry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcMain_Entry.swift; sourceTree = "<group>"; };
+		A13C26FE1ADDBA730054DEA3 /* NotificationUpdateBadgeTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationUpdateBadgeTabBar.swift; sourceTree = "<group>"; };
+		A13C27001ADDBE820054DEA3 /* vcHome_AddPerson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcHome_AddPerson.swift; sourceTree = "<group>"; };
 		A15BE0111ADCBA6A007F6690 /* nvcDiscover_entry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = nvcDiscover_entry.swift; sourceTree = "<group>"; };
 		A15BE0441ADD5450007F6690 /* vcDiscover_Photos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcDiscover_Photos.swift; sourceTree = "<group>"; };
 		A15BE0461ADD5468007F6690 /* vcDiscover_Posts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcDiscover_Posts.swift; sourceTree = "<group>"; };
@@ -208,6 +214,7 @@
 				A12119451AD86B95004CA9FF /* InfoPlistBundle.swift */,
 				A12119461AD86B95004CA9FF /* JSONParser.swift */,
 				A12119471AD86B95004CA9FF /* ParserJSON.swift */,
+				A13C26FE1ADDBA730054DEA3 /* NotificationUpdateBadgeTabBar.swift */,
 			);
 			path = controls;
 			sourceTree = "<group>";
@@ -236,7 +243,8 @@
 		A121194C1AD86B95004CA9FF /* views */ = {
 			isa = PBXGroup;
 			children = (
-				A12119B31AD8711E004CA9FF /* tbcMain.swift */,
+				A12119B31AD8711E004CA9FF /* tbcMain_Navigation.swift */,
+				A13C26FC1ADDB5480054DEA3 /* vcMain_Entry.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -702,6 +710,7 @@
 				A13C26E51ADD86550054DEA3 /* vcHome_Trending.swift */,
 				A13C26E61ADD86550054DEA3 /* vcHome_MostRecent.swift */,
 				A13C26E71ADD86550054DEA3 /* vcHome_Reviews.swift */,
+				A13C27001ADDBE820054DEA3 /* vcHome_AddPerson.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -779,6 +788,7 @@
 				TargetAttributes = {
 					A12119151AD85F9B004CA9FF = {
 						CreatedOnToolsVersion = 6.3;
+						DevelopmentTeam = 47WJ34CEWA;
 					};
 					A121192C1AD85F9C004CA9FF = {
 						CreatedOnToolsVersion = 6.3;
@@ -843,6 +853,8 @@
 			files = (
 				A121195D1AD86B95004CA9FF /* ENSideMenu.swift in Sources */,
 				A13C26EF1ADD86550054DEA3 /* vcHome_Trending.swift in Sources */,
+				A13C27011ADDBE820054DEA3 /* vcHome_AddPerson.swift in Sources */,
+				A13C26FD1ADDB5490054DEA3 /* vcMain_Entry.swift in Sources */,
 				A15BE0471ADD5468007F6690 /* vcDiscover_Posts.swift in Sources */,
 				A13C26EE1ADD86550054DEA3 /* vcHome_Following.swift in Sources */,
 				A13C26F01ADD86550054DEA3 /* vcHome_MostRecent.swift in Sources */,
@@ -859,8 +871,9 @@
 				A15BE04B1ADD5FA3007F6690 /* vcAdd_Entry.swift in Sources */,
 				A12119611AD86B95004CA9FF /* ParserJSON.swift in Sources */,
 				A121195B1AD86B95004CA9FF /* CallHttp.swift in Sources */,
+				A13C26FF1ADDBA730054DEA3 /* NotificationUpdateBadgeTabBar.swift in Sources */,
 				A121191C1AD85F9B004CA9FF /* AppDelegate.swift in Sources */,
-				A12119B41AD8711E004CA9FF /* tbcMain.swift in Sources */,
+				A12119B41AD8711E004CA9FF /* tbcMain_Navigation.swift in Sources */,
 				A13C26F11ADD86550054DEA3 /* vcHome_Reviews.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -939,7 +952,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -978,7 +991,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -990,7 +1003,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = MakeupAddiction/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -1000,7 +1015,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = MakeupAddiction/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

@@ -1,5 +1,5 @@
 //
-//  tbcMain_ViewController.swift
+//  tbcMain_Navigation.swift
 //  MakeupAddiction
 //
 //  Created by Stephen Shellenberger on 4/10/15.
@@ -9,7 +9,7 @@
 import Foundation;
 import UIKit;
 
-class tbcMain : UITabBarController, UITabBarControllerDelegate
+class tbcMain_Navigation : UITabBarController, UITabBarControllerDelegate
 {
     
     override func viewDidLoad()
@@ -21,11 +21,20 @@ class tbcMain : UITabBarController, UITabBarControllerDelegate
     override func viewWillAppear(animated: Bool)
     {
         //array of the root view controllers displayed by the tab bar interface
-        let controllers = [self.getHome(), self.getDiscover(), self.getAdd(), self.getActivities(), self.getProfile()];
+        let controllers = [self.getHomeNavi(), self.getDiscover(), self.getAdd(), self.getActivities(), self.getProfile()];
         self.viewControllers = controllers;
+        
     }
     
     //Delegate methods
+    func tabBarController(tabBarController: UITabBarController
+                            , willBeginCustomizingViewControllers viewControllers: [AnyObject])
+    {
+        var tabArray = tabBarController.tabBar.items as NSArray!
+        var tabItem = tabArray.objectAtIndex(3) as! UITabBarItem;
+        tabItem.badgeValue = "34"
+    }
+    
     func tabBarController(tabBarController: UITabBarController
                         , shouldSelectViewController viewController: UIViewController) -> Bool
     {
@@ -42,7 +51,21 @@ class tbcMain : UITabBarController, UITabBarControllerDelegate
             , image:UIImage(named: "homeicon@3x.png")
             , selectedImage: UIImage(named: "homeicon@3x.png"));
         
+        pvc.tabBarItem.badgeValue = "34"
+        
         return pvc;
+    }
+    
+    func getHomeNavi() -> UINavigationController!
+    {
+        var storyboard:UIStoryboard = UIStoryboard(name: "Home", bundle: nil);
+        var nv:UINavigationController = storyboard.instantiateViewControllerWithIdentifier("sbidHome_Entry") as! UINavigationController;
+        
+        nv.tabBarItem = UITabBarItem(title: "Home"
+            , image:UIImage(named: "homeicon@3x.png")
+            , selectedImage: UIImage(named: "homeicon@3x.png"));
+      
+        return nv;
     }
     
     func getDiscover() -> UINavigationController!
@@ -77,6 +100,9 @@ class tbcMain : UITabBarController, UITabBarControllerDelegate
         vc.tabBarItem = UITabBarItem(title: "Activities"
             , image:UIImage(named: "activityicon@3x.png")
             , selectedImage: UIImage(named: "activityicon@3x.png"));
+        
+        let nubtb = NotificationUpdateBadgeTabBar();
+        vc.tabBarItem.badgeValue = nubtb.getBadgeCountforActivities();
         
         return vc;
     }

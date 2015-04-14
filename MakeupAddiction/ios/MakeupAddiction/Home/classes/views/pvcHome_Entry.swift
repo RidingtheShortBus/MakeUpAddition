@@ -125,7 +125,7 @@ class pvcHome_Entry : UIPageViewController, UIPageViewControllerDataSource, UIPa
                 var sizeRect = UIScreen.mainScreen().applicationFrame;
                 var width = sizeRect.size.width;
                 var height = sizeRect.size.height;
-                var offsetH = ((height * 0.09) - height)
+                var offsetH = ((height * 0.1) - height)
                 NSLog("viewDidLayoutSubviews%@", offsetH);
                 subView.frame.offset(dx: 0, dy: offsetH);
                 self.view.bringSubviewToFront(subView)
