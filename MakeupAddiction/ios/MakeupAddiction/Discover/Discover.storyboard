@@ -118,10 +118,10 @@
             </objects>
             <point key="canvasLocation" x="2158" y="844"/>
         </scene>
-        <!--Discover-->
+        <!--Discover Entry-->
         <scene sceneID="W3m-e3-wdP">
             <objects>
-                <navigationController storyboardIdentifier="sbidDiscover_Entry" title="Discover" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kKz-Br-7N3" customClass="nvcDiscover_Entry" customModule="MakeupAddiction" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="sbidDiscover_Entry" title="Discover Entry" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kKz-Br-7N3" customClass="nvcDiscover_Entry" customModule="MakeupAddiction" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ayb-W2-73T">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

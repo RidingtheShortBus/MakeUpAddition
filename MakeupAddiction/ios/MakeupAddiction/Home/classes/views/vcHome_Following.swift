@@ -1,14 +1,14 @@
 //
-//  vcNotifications_Entry.swift
+//  vcHome_Following.swift
 //  MakeupAddiction
 //
-//  Created by Stephen Shellenberger on 4/14/15.
+//  Created by Stephen Shellenberger on 4/10/15.
 //  Copyright (c) 2015 Riding the ShortBus. All rights reserved.
 //
 
 import UIKit
 
-class vcNotifications_Entry: UIViewController {
+class vcHome_Following: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

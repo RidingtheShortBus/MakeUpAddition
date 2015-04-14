@@ -1,14 +1,14 @@
 //
-//  vcFeed_Following.swift
+//  vcActivities_Entry.swift
 //  MakeupAddiction
 //
-//  Created by Stephen Shellenberger on 4/10/15.
+//  Created by Stephen Shellenberger on 4/14/15.
 //  Copyright (c) 2015 Riding the ShortBus. All rights reserved.
 //
 
 import UIKit
 
-class vcFeed_Following: UIViewController {
+class vcActivities_Entry: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

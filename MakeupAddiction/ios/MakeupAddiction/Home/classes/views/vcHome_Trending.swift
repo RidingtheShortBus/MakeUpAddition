@@ -1,5 +1,5 @@
 //
-//  vcFeed_MostRecent.swift
+//  vcHome_Trending.swift
 //  MakeupAddiction
 //
 //  Created by Stephen Shellenberger on 4/10/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class vcFeed_MostRecent: UIViewController {
+class vcHome_Trending: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

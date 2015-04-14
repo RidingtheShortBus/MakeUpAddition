@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
     </dependencies>
     <scenes>
-        <!--Profile-->
+        <!--Profile Entry-->
         <scene sceneID="TJx-ch-YBp">
             <objects>
-                <viewController storyboardIdentifier="sbidProfile_Entry" title="Profile" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3oE-Zu-0fq" customClass="vcProfile_Entry" customModule="MakeupAddiction" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="sbidProfile_Entry" title="Profile Entry" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3oE-Zu-0fq" customClass="vcProfile_Entry" customModule="MakeupAddiction" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="LuT-n5-f8s"/>
                         <viewControllerLayoutGuide type="bottom" id="zGB-AB-wCD"/>
