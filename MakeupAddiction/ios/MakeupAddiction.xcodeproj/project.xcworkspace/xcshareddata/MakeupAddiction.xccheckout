@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>70E81BFB-5FE4-494F-8528-9280016245D0</string>
 	<key>IDESourceControlProjectName</key>
-	<string>MakeupAddiction</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>3F422F9434351DC28B9E74F95305A7496E6E130D</key>
 		<string>https://github.com/RidingtheShortBus/makeupaddiction.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>MakeupAddiction/ios/MakeupAddiction.xcodeproj</string>
+	<string>MakeupAddiction/ios/MakeupAddiction.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>3F422F9434351DC28B9E74F95305A7496E6E130D</key>

@@ -1,14 +1,14 @@
 //
-//  vcFeed_MostRecent.swift
+//  vcDiscover_Posts.swift
 //  MakeupAddiction
 //
-//  Created by Stephen Shellenberger on 4/10/15.
+//  Created by Stephen Shellenberger on 4/14/15.
 //  Copyright (c) 2015 Riding the ShortBus. All rights reserved.
 //
 
 import UIKit
 
-class vcFeed_MostRecent: UIViewController {
+class vcDiscover_Posts: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
